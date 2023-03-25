@@ -1,12 +1,8 @@
 name: Docker Build and Push
 
 on:
-  push:
-    branches:
-      - master
-  pull_request:
-    branches:
-      - master
+  release:
+    types: [published]
 
 jobs:
   build-and-push:
@@ -15,6 +11,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+
+      - name: Set up Node.js 16.x
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16.x
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
@@ -37,6 +38,3 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: ghcr.io/ainzone/aio-docker-wordpress:latest
-
-      - name: Upload coverage reports to Codecov
-        uses: codecov/codecov-action@v3
