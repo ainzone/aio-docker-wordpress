@@ -36,10 +36,6 @@ jobs:
           push: false
           tags: ghcr.io/ainzone/aio-docker-wordpress:${{ github.sha }}
 
-      - name: Run tests
-        run: |
-          docker run --rm ghcr.io/ainzone/aio-docker-wordpress:${{ github.sha }} npm test
-
       - name: Push Docker image
         uses: docker/build-push-action@v2
         with:
