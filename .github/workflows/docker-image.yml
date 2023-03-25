@@ -38,26 +38,5 @@ jobs:
           push: true
           tags: ghcr.io/ainzone/aio-docker-wordpress:latest
 
-      - name: Get the image digest
-        id: get_digest
-        run: echo "::set-output name=digest::$(docker inspect ghcr.io/ainzone/aio-docker-wordpress:latest --format='{{index .RepoDigests 0}}')"
-
-      - name: Save the image digest
-        uses: actions/toolkit@v5
-        id: save_digest
-        with:
-          path: ./digest
-          contents: ${{ steps.get_digest.outputs.digest }}
-        
-      - name: Display the image digest
-        run: echo "The image digest is ${{ steps.save_digest.outputs.contents }}"
-
-      - name: Upload the image digest
-        uses: actions/upload-artifact@v2
-        with:
-          name: image-digest
-          path: ./digest
-          
-      - name: Cleanup
-        run: |
-          rm -rf ./digest
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v3

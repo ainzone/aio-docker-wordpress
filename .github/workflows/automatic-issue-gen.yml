@@ -1,0 +1,24 @@
+name: Issue on Action Failure
+
+on:
+  workflow_run:
+    workflows: ["Issue Generator"]
+    types:
+      - completed
+
+jobs:
+  check-action-status:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check for failed jobs
+        if: ${{ github.event.workflow_run.conclusion == 'failure' }}
+        run: |
+          echo "The workflow failed: ${{ github.event.workflow_run.url }}"
+          echo "Creating a new issue to track this failure"
+          # create an issue using GitHub API
+          curl -X POST \
+            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Accept: application/vnd.github.v3+json" \
+            https://api.github.com/repos/ainzone/aio-docker-wordpress/issues \
+            -d '{"title":"Workflow failed: ${{ github.event.workflow_run.url }}","body":"The workflow ${{ github.event.workflow_run.name }} failed on branch ${{ github.event.workflow_run.head_branch }}.\n\nDetails: ${{ github.event.workflow_run.url }}"}'
