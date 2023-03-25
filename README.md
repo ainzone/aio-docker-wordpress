@@ -2,6 +2,8 @@
 
 This repository contains Docker Compose and Dockerfile configurations for creating a containerized WordPress application with PHP 8.2 and Nginx. The Docker Compose file creates multiple containers for WordPress, MySQL, and Nginx, while the Dockerfile builds a single image that includes PHP, Nginx, and WordPress.
 
+[![Docker Build](https://github.com/ainzone/aio-docker-wordpress/actions/workflows/docker-image.yml/badge.svg?branch=master)](https://github.com/ainzone/aio-docker-wordpress/actions/workflows/docker-image.yml)
+
 ## Compose File
 
 This Docker Compose file creates a container with PHP 8.2, Nginx, and WordPress. The wordpress container uses the official WordPress image and runs on the db container to access the MySQL database. The nginx container runs as a reverse proxy for the wordpress container, forwarding requests to port 8080 to the wordpress container.
