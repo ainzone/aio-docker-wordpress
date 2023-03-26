@@ -12,12 +12,11 @@ This Docker Compose file creates a container with PHP 8.2, Nginx, and WordPress.
 
 ### Packages
 
-| Package                                                      | Description                                                                                                         |
-| ------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------- |
-| [**WordPress**](https://github.com/docker-library/wordpress) | An open-source software used for creating websites and blogs. WordPress is run in its own container.                |
-| [**MySQL**](https://github.com/docker-library/mysql)         | An open-source database used for storing WordPress data. MySQL is run in its own container.                         |
-| [**Nginx**](https://github.com/nginxinc/docker-nginx)        | A web server and reverse proxy used to access WordPress via ports 80 and 443.                                       |
-| [**Node.js**](https://github.com/nodejs/docker-node)         | Node.js is a platform built on Chrome's JavaScript runtime for easily building fast, scalable network applications. |
+| Package                                                      | Description                                                                                          |
+| ------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------- |
+| [**WordPress**](https://github.com/docker-library/wordpress) | An open-source software used for creating websites and blogs. WordPress is run in its own container. |
+| [**MySQL**](https://github.com/docker-library/mysql)         | An open-source database used for storing WordPress data. MySQL is run in its own container.          |
+| [**Nginx**](https://github.com/nginxinc/docker-nginx)        | A web server and reverse proxy used to access WordPress via ports 80 and 443.                        |
 
 ### Ports
 
@@ -38,15 +37,16 @@ This Docker Compose file creates a container with PHP 8.2, Nginx, and WordPress.
 
 ## Dockerfile
 
-This Dockerfile creates an image with PHP 8.2, Nginx, and WordPress. The image also includes Composer for installing WordPress and an Nginx configuration file for running Nginx as a reverse proxy for PHP-FPM.
+This Dockerfile creates an image with PHP 8.2, Nginx, WordPress, and Node.js. The image also includes Composer for installing WordPress and an Nginx configuration file for running Nginx as a reverse proxy for PHP-FPM.
 
 ### Packages
 
-**WordPress**: An open-source software used for creating websites and blogs.
-
-**PHP**: A scripting language used for executing WordPress code.
-
-**Nginx**: A web server and reverse proxy used to access WordPress via port 80.
+| Package                                                      | Description                                                                                                         |
+| ------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------- |
+| [**WordPress**](https://github.com/docker-library/wordpress) | An open-source software used for creating websites and blogs. WordPress is run in its own container.                |
+| [**MySQL**](https://github.com/docker-library/mysql)         | An open-source database used for storing WordPress data. MySQL is run in its own container.                         |
+| [**Nginx**](https://github.com/nginxinc/docker-nginx)        | A web server and reverse proxy used to access WordPress via ports 80 and 443.                                       |
+| [**Node.js**](https://github.com/nodejs/docker-node)         | Node.js is a platform built on Chrome's JavaScript runtime for easily building fast, scalable network applications. |
 
 ### Ports
 
